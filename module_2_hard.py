@@ -5,7 +5,13 @@ def make_encrypt(num):
             pair_sum = i + j
             if num % pair_sum == 0:
                 encrypt.append(str(i) + str(j))
-    return ''.join(encrypt)
+    result = ''.join(encrypt)
+    print(f'{num} - {result}')
 
-num = 9
-print(make_encrypt(num))
+
+while True:
+    num = int(input('Введите число от 3 до 20: '))
+    if num < 3 or num > 20:
+        continue
+    make_encrypt(num)
+    break
