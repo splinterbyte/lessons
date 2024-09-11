@@ -1,17 +1,15 @@
 def make_encrypt(num):
-    encrypt = []
+    result = ""
+    pairs = []
     for i in range(1, 21):
-        for j in range(i, 21):
-            pair_sum = i + j
-            if num % pair_sum == 0:
-                encrypt.append(str(i) + str(j))
-    result = ''.join(encrypt)
-    print(f'{num} - {result}')
+        for j in range(1, 21):
+            if i != j and num % (i + j) == 0:
+                pair = (i, j)
+                if pair not in pairs and (j, i) not in pairs:
+                    pairs.append(pair)
+    for pair in pairs:
+        result += str(pair[0]) + str(pair[1])
+    return result
 
-
-while True:
-    num = int(input('Введите число от 3 до 20: '))
-    if num < 3 or num > 20:
-        continue
-    make_encrypt(num)
-    break
+for n in range(3, 21):
+    print(f"{n} - {make_encrypt(n)}")
